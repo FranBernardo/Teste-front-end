@@ -24,6 +24,25 @@ const routes = [
     component: () => import(  "@/views/Postagens.vue"),
     props: true,
   },
+  {
+    path:"/usuarios",
+    name: "Usuarios",
+    component: () => import( "@/views/Usuarios"),
+    props: true,
+  },
+  {
+    path:"/detalhes",
+    name: "Detalhes",
+    component: () => import( "@/views/Detalhes"),
+    props: true,
+  },
+  {
+    path:"/comentarios",
+    name: "Comentarios",
+    component: () => import( "@/views/Comentarios"),
+    props: true,
+  },
+
 ]
 
 const router = new VueRouter({

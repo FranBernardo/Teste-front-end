@@ -1,48 +1,57 @@
 <template>
-    <div>
-        <pre>{{detay}}</pre>
-        <el-table :data="coments">
-            <el-table-column label="name" prop="name"></el-table-column>
-            <el-table-column label="email" prop="email"></el-table-column>
-            <el-table-column label="body" prop="body"></el-table-column>
-        </el-table>
+ <div >
 
-    </div>
+   <el-table
+    :data="data"
+    style="width: 100%">
+    <el-table-column>
+      <template slot-scope="props">
+        <h4>Titulo:</h4>
+        <p> {{ props.row.title }}</p>
+          <h4>Postagen:</h4>
+        <p> {{ props.row.body }}</p>
+      </template>
+    </el-table-column>
+    
+     <el-table-column>
+       <template slot-scope="scope">
+       <el-button @click="detay(scope.row)">
+        comentarios
+       </el-button>
+       </template>
+     </el-table-column>
+    
+  </el-table> 
+ </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios"
 
 export default {
-    props:["Postagens"],
-    data(){
-        return{
-            detay:[],
-            coments: [],
-        }
-    },
-    methods:{
-        getPostagens(){
-            axios.get(`https://jsonplaceholder.typicode.com/posts/${this.Postagens.id}`)
-            .then((response)=> {
-                console.log(response)
-                this.detay = response.data;
-                
-            })
-
-            
-        },
-        getComents(){
-            axios.get(`https://jsonplaceholder.typicode.com/posts/${this.Postagens.id}/comments`)
-            .then((response) => {
-                console.log(response);
-                this.coments = response.data
-            })
-        }
-    },
-    created(){
-        this.getPostagens();
-        this.getComents();
+  name: 'Postagens',
+  data(){
+    return{
+      data: [],
     }
+  },
+  methods:{
+    detay(row){
+      this.$router.push({
+        name: "Comentarios",
+        params:{Comentarios:row}
+      })
+    },
+    getItem(){
+      axios.get("https://jsonplaceholder.typicode.com/posts")
+      .then((response) =>{
+        this.data = response.data;
+        console.log(response);
+      })
+    }
+  },
+  created(){
+    this.getItem();
+  }
 }
 </script>
