@@ -7,7 +7,7 @@
     </p>
     <p>
       Aqui você verá todas as Postagens de nossos usuarios e ainda poderá ver as
-      informações de todos usuarios (caso queira da uma olhada no perfil da
+      informações de todos os usuários (caso queira da uma olhada no perfil da
       paquera rsrsrs). Não perca mais tempo comece a ver as postagens e não por
       fora de nada!
     </p>
